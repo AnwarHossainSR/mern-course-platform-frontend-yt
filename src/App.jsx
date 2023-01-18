@@ -1,5 +1,14 @@
+import { Stack } from '@mui/material';
+import { Route, Routes } from 'react-router-dom';
+
 const App = () => {
-  return <div>React + Vite Js + Eslint + Prettier + Husky</div>;
+  return (
+    <Stack>
+      <Routes>
+        <Route path="/" element={<h1>Hello</h1>} />
+      </Routes>
+    </Stack>
+  );
 };
 
 export default App;
