@@ -21,6 +21,7 @@ const TopBar = () => {
       justifyContent="space-between"
       p={2}
       backgroundColor={colors.primary[400]}
+      px={{ xs: 2, sm: 4, md: 6, lg: 8 }}
     >
       <Box
         component="img"
@@ -39,7 +40,7 @@ const TopBar = () => {
         sx={{
           '& > *': {
             margin: theme.spacing(1),
-            color: colors.primary[100],
+            color: colors.grey[100],
             textDecoration: 'none',
             '&:hover': {
               color: colors.greenAccent[500],
@@ -48,15 +49,18 @@ const TopBar = () => {
           },
         }}
       >
+        <Link to="/">Home</Link>
         <Link to="/courses">Courses</Link>
         <Link to="/admin/dashboard">Dashboard</Link>
+        <Link to="/contact">Contact</Link>
+        <Link to="/about">About</Link>
       </Box>
       <Box display="flex">
         <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === 'dark' ? (
-            <DarkModeOutlinedIcon />
-          ) : (
             <LightModeOutlinedIcon />
+          ) : (
+            <DarkModeOutlinedIcon />
           )}
         </IconButton>
         <IconButton>
