@@ -7,8 +7,13 @@ import {
   IconButton,
   Typography,
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { tokens, useMode } from '../../context/theme';
 
 const CourseCard = () => {
+  const navigate = useNavigate();
+  const [theme] = useMode();
+  const colors = tokens(theme.palette.mode);
   return (
     <Card sx={{ p: 2, m: 2, width: 300 }}>
       <Box
@@ -24,7 +29,18 @@ const CourseCard = () => {
         Quisquam, quae.
       </Typography>
       <CardActions sx={{ justifyContent: 'space-between' }}>
-        <Button variant="contained">View Course</Button>
+        <Button
+          sx={{
+            background: colors.blueAccent[100],
+            '&:hover': {
+              background: colors.blueAccent[200],
+            },
+          }}
+          variant="contained"
+          onClick={() => navigate('/courses/id')}
+        >
+          View Course
+        </Button>
         <IconButton
           sx={{
             display: 'flex',

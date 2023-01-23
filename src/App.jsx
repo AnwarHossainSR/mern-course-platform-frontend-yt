@@ -5,6 +5,7 @@ import About from './pages/About';
 import Dashboard from './pages/admin/Dashboard';
 import ContactMe from './pages/ContactMe';
 import Course from './pages/Course';
+import CourseDetails from './pages/CourseDetails';
 import TopBar from './pages/global/Topbar';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
@@ -19,14 +20,14 @@ const App = () => {
           sx={{
             background: colors.blueAccent[900],
             minHeight: '100vh',
-            maxHeight: 'auto',
+            maxHeight: 'fit-content',
           }}
         >
           <TopBar />
           <Stack
             sx={{
               color: colors.primary[100],
-              my: 4,
+              mt: 4,
               px: { xs: 2, sm: 4, md: 6, lg: 8 },
             }}
           >
@@ -36,6 +37,7 @@ const App = () => {
               <Route path="/about" element={<About />} />
               <Route path="/courses">
                 <Route index element={<Course />} />
+                <Route path=":courseId" element={<CourseDetails />} />
               </Route>
               <Route path="/admin/*">
                 <Route path="dashboard" element={<Dashboard />} />
