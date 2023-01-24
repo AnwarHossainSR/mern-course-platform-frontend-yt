@@ -1,5 +1,9 @@
+import { Outlet } from 'react-router-dom';
+import Auth from '../Auth/Auth';
+
 const Authenticated = () => {
-  return <div>Authenticated</div>;
+  const isAuth = true;
+  return isAuth ? <Outlet /> : <Auth />;
 };
 
 export default Authenticated;
