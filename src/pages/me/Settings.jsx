@@ -3,6 +3,7 @@ import { useState } from 'react';
 import BasicInfo from '../../components/settings/BasicInfo';
 import Subscription from '../../components/settings/Subscription';
 import { tokens, useMode } from '../../context/theme';
+import Plans from './Plans';
 
 const Settings = () => {
   const [selected, setSelected] = useState(0);
@@ -41,6 +42,19 @@ const Settings = () => {
           }}
           onClick={() => setSelected(1)}
         >
+          Buy Plan
+        </Button>
+        <Button
+          variant="contained"
+          sx={{
+            background:
+              selected === 2 ? colors.blueAccent[200] : colors.blueAccent[100],
+            '&:hover': {
+              background: colors.blueAccent[200],
+            },
+          }}
+          onClick={() => setSelected(2)}
+        >
           Subscription
         </Button>
       </Box>
@@ -51,7 +65,8 @@ const Settings = () => {
         }}
       >
         {selected === 0 && <BasicInfo colors={colors} />}
-        {selected === 1 && <Subscription colors={colors} />}
+        {selected === 1 && <Plans colors={colors} />}
+        {selected === 2 && <Subscription colors={colors} />}
       </Box>
     </Box>
   );
