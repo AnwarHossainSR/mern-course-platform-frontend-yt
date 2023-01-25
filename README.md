@@ -10,23 +10,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/AnwarHossainSR/react-vite-eslint-prettier-husky-template.git">
+  <a href="https://github.com/AnwarHossainSR/mern-course-platform-frontend-yt.git">
     <img src="/readme/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">React Vite Template</h3>
+  <h3 align="center">Mern Subcription Application</h3>
 
   <p align="center">
     README template for dev.to-clone!
     <br />
-    <a href="https://github.com/AnwarHossainSR/react-vite-eslint-prettier-husky-template.git"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/AnwarHossainSR/mern-course-platform-frontend-yt.git"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/AnwarHossainSR/react-vite-eslint-prettier-husky-template.git">View Demo</a>
+    <a href="https://github.com/AnwarHossainSR/mern-course-platform-frontend-yt.git">View Demo</a>
     ·
-    <a href="https://github.com/AnwarHossainSR/react-vite-eslint-prettier-husky-template.git/issues">Report Bug</a>
+    <a href="https://github.com/AnwarHossainSR/mern-course-platform-frontend-yt.git/issues">Report Bug</a>
     ·
-    <a href="https://github.com/AnwarHossainSR/react-vite-eslint-prettier-husky-template.git/issues">Request Feature</a>
+    <a href="https://github.com/AnwarHossainSR/mern-course-platform-frontend-yt.git/issues">Request Feature</a>
   </p>
 </div>
 
@@ -58,7 +58,7 @@
 
 ### Github template
 
-[Create a repo from this template on GitHub.](https://github.com/AnwarHossainSR/react-vite-eslint-prettier-husky-template.git/generate)
+[Create a repo from this template on GitHub.](https://github.com/AnwarHossainSR/mern-course-platform-frontend-yt.git/generate)
 
 <!-- ABOUT THE PROJECT -->
 
@@ -114,7 +114,7 @@ _Below is an example of how you can instruct your audience on installing and set
 1. Clone the repo
 
    ```sh
-   git clone https://github.com/AnwarHossainSR/react-vite-eslint-prettier-husky-template.git
+   git clone https://github.com/AnwarHossainSR/mern-course-platform-frontend-yt.git
    ```
 
 2. Install NPM packages
@@ -163,7 +163,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Add "components" document to easily copy & paste sections of the readme
 - [ ] Multi-language Support
 
-See the [open issues](https://github.com/AnwarHossainSR/react-vite-eslint-prettier-husky-template.git/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/AnwarHossainSR/mern-course-platform-frontend-yt.git/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -198,7 +198,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Your Name - [@anwarsr](https://twitter.com/anwarsr) - email@example.com
 
-Project Link: [https://github.com/AnwarHossainSR/react-vite-eslint-prettier-husky-template.git](https://github.com/AnwarHossainSR/react-vite-eslint-prettier-husky-template.git)
+Project Link: [https://github.com/AnwarHossainSR/mern-course-platform-frontend-yt.git](https://github.com/AnwarHossainSR/mern-course-platform-frontend-yt.git)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -223,15 +223,15 @@ Use this space to list resources you find helpful and would like to give credit 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/AnwarHossainSR/react-vite-eslint-prettier-husky-template.git/graphs/contributors
+[contributors-url]: https://github.com/AnwarHossainSR/mern-course-platform-frontend-yt.git/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/AnwarHossainSR/react-vite-eslint-prettier-husky-template.git/network/members
+[forks-url]: https://github.com/AnwarHossainSR/mern-course-platform-frontend-yt.git/network/members
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/AnwarHossainSR/react-vite-eslint-prettier-husky-template.git/stargazers
+[stars-url]: https://github.com/AnwarHossainSR/mern-course-platform-frontend-yt.git/stargazers
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/AnwarHossainSR/react-vite-eslint-prettier-husky-template.git/issues
+[issues-url]: https://github.com/AnwarHossainSR/mern-course-platform-frontend-yt.git/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/AnwarHossainSR/react-vite-eslint-prettier-husky-template.git/blob/master/LICENSE.txt
+[license-url]: https://github.com/AnwarHossainSR/mern-course-platform-frontend-yt.git/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/anwarsr
 [react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
