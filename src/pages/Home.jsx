@@ -1,4 +1,4 @@
-import { Box, Button, Stack, Typography } from '@mui/material';
+import { Box, Button, Input, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
 import CourseCard from '../components/Cards/CourseCard';
 import { tokens, useMode } from '../context/theme';
@@ -15,6 +15,8 @@ const Home = () => {
       }}
     >
       <Typography variant="h4">Coursecity Top Courses</Typography>
+
+      <Input sx={{ width: '40%', margin: '1rem' }} placeholder="Search" />
 
       <Stack py={4} gap={1} direction="row">
         <Button
