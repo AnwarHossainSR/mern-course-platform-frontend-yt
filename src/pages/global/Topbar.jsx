@@ -1,12 +1,10 @@
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
-import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { Box, useTheme } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { assets } from '../../assets/index.js';
 import { ColorModeContext, tokens } from '../../context/theme.js';
 
@@ -14,6 +12,7 @@ const TopBar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -26,7 +25,7 @@ const TopBar = () => {
       <Box
         component="img"
         sx={{
-          height: 30,
+          height: 45,
           width: 120,
         }}
         alt="logo"
@@ -50,8 +49,6 @@ const TopBar = () => {
         }}
       >
         <Link to="/">Home</Link>
-        <Link to="/courses">Courses</Link>
-        <Link to="/admin/dashboard">Dashboard</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/about">About</Link>
       </Box>
@@ -63,13 +60,7 @@ const TopBar = () => {
             <DarkModeOutlinedIcon />
           )}
         </IconButton>
-        <IconButton>
-          <NotificationsOutlinedIcon />
-        </IconButton>
-        <IconButton>
-          <SettingsOutlinedIcon />
-        </IconButton>
-        <IconButton>
+        <IconButton onClick={() => navigate('/me')}>
           <PersonOutlinedIcon />
         </IconButton>
       </Box>
