@@ -29,6 +29,7 @@ const App = () => {
               color: colors.primary[100],
               mt: 4,
               px: { xs: 2, sm: 4, md: 6, lg: 8 },
+              //px: 2,
             }}
           >
             <Routes>

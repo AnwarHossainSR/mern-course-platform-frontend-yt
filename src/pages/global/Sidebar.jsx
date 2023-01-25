@@ -21,13 +21,7 @@ const Sidebar = ({ sidebarItem, setSidebarItem }) => {
         disablePadding
         onClick={() => setSidebarItem('playlists')}
         sx={{
-          background:
-            sidebarItem === 'playlists'
-              ? colors.blueAccent[200]
-              : colors.blueAccent[100],
-          '&:hover': {
-            background: colors.blueAccent[200],
-          },
+          background: sidebarItem === 'playlists' && colors.blueAccent[1000],
         }}
       >
         <ListItemButton>
@@ -41,7 +35,7 @@ const Sidebar = ({ sidebarItem, setSidebarItem }) => {
         disablePadding
         onClick={() => setSidebarItem('settings')}
         sx={{
-          background: sidebarItem === 'settings' && colors.primary[800],
+          background: sidebarItem === 'settings' && colors.blueAccent[1000],
         }}
       >
         <ListItemButton>
@@ -55,7 +49,7 @@ const Sidebar = ({ sidebarItem, setSidebarItem }) => {
         disablePadding
         onClick={() => setSidebarItem('password')}
         sx={{
-          background: sidebarItem === 'password' && colors.primary[800],
+          background: sidebarItem === 'password' && colors.blueAccent[1000],
         }}
       >
         <ListItemButton>
