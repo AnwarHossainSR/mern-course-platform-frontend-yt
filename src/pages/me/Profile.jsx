@@ -1,12 +1,12 @@
 import { Box } from '@mui/material';
 import { useState } from 'react';
-import Sidebar from './global/Sidebar';
-import ChangePassword from './me/ChangePassword';
-import Playlists from './me/Playlists';
-import Settings from './me/Settings';
+import Sidebar from '../global/Sidebar';
+import ChangePassword from './ChangePassword';
+import Playlists from './Playlists';
+import Settings from './Settings';
 
 const Profile = () => {
-  const [sidebarItem, setSidebarItem] = useState('settings');
+  const [sidebarItem, setSidebarItem] = useState('playlists');
   return (
     <Box
       sx={{

@@ -21,7 +21,13 @@ const Sidebar = ({ sidebarItem, setSidebarItem }) => {
         disablePadding
         onClick={() => setSidebarItem('playlists')}
         sx={{
-          background: sidebarItem === 'playlists' && colors.primary[800],
+          background:
+            sidebarItem === 'playlists'
+              ? colors.blueAccent[200]
+              : colors.blueAccent[100],
+          '&:hover': {
+            background: colors.blueAccent[200],
+          },
         }}
       >
         <ListItemButton>

@@ -2,14 +2,12 @@ import { Box, Stack, ThemeProvider } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
 import { ColorModeContext, tokens, useMode } from './context/theme';
 import About from './pages/About';
-import Dashboard from './pages/admin/Dashboard';
 import Auth from './pages/Auth/Auth';
 import ContactMe from './pages/ContactMe';
-import Course from './pages/Course';
 import TopBar from './pages/global/Topbar';
 import Home from './pages/Home';
+import Profile from './pages/me/Profile';
 import NotFound from './pages/NotFound';
-import Profile from './pages/Profile';
 import Authenticated from './pages/Proteted/Authenticated';
 
 const App = () => {
@@ -38,14 +36,8 @@ const App = () => {
               <Route path="/auth" element={<Auth />} />
               <Route path="/contact" element={<ContactMe />} />
               <Route path="/about" element={<About />} />
-              <Route path="/courses">
-                <Route index element={<Course />} />
-              </Route>
               <Route path="/me" element={<Authenticated />}>
                 <Route index element={<Profile />} />
-              </Route>
-              <Route path="/admin/*">
-                <Route path="dashboard" element={<Dashboard />} />
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>

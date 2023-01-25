@@ -25,7 +25,7 @@ const TopBar = () => {
       <Box
         component="img"
         sx={{
-          height: 30,
+          height: 45,
           width: 120,
         }}
         alt="logo"
@@ -49,8 +49,6 @@ const TopBar = () => {
         }}
       >
         <Link to="/">Home</Link>
-        <Link to="/courses">Courses</Link>
-        <Link to="/admin/dashboard">Dashboard</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/about">About</Link>
       </Box>
