@@ -22,9 +22,6 @@ const Sidebar = ({ sidebarItem, setSidebarItem }) => {
         onClick={() => setSidebarItem('playlists')}
         sx={{
           background: sidebarItem === 'playlists' && colors.blueAccent[1000],
-          '&:hover': {
-            background: colors.blueAccent[200],
-          },
         }}
       >
         <ListItemButton>

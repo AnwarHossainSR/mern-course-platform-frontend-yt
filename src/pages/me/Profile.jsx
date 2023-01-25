@@ -17,6 +17,8 @@ const Profile = () => {
       <Box
         sx={{
           width: '20%',
+          minHeight: '100vh',
+          maxHeight: '100vh',
         }}
       >
         <Sidebar setSidebarItem={setSidebarItem} sidebarItem={sidebarItem} />
@@ -24,7 +26,6 @@ const Profile = () => {
       <Box
         sx={{
           width: '80%',
-          p: 2,
         }}
       >
         {sidebarItem === 'settings' && <Settings />}
