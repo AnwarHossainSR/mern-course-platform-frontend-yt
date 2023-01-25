@@ -1,7 +1,7 @@
 import { Box, Button, Card, Input, Stack } from '@mui/material';
 import { useState } from 'react';
-import { tokens, useMode } from '../../context/theme';
 import WhiteSpace from '../../components/Common/WhiteSpace';
+import { tokens, useMode } from '../../context/theme';
 
 const Auth = () => {
   const [auth, setAuth] = useState('login');

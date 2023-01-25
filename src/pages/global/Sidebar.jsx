@@ -10,11 +10,13 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { tokens, useMode } from '../../context/theme';
 
 const Sidebar = ({ sidebarItem, setSidebarItem }) => {
   const [theme] = useMode();
   const colors = tokens(theme.palette.mode);
+  const navigate = useNavigate();
 
   return (
     <List>
@@ -60,13 +62,7 @@ const Sidebar = ({ sidebarItem, setSidebarItem }) => {
           <ListItemText primary="Change Password" />
         </ListItemButton>
       </ListItem>
-      <ListItem
-        disablePadding
-        onClick={() => setSidebarItem('dashboard')}
-        sx={{
-          background: sidebarItem === 'dashboard' && colors.blueAccent[1000],
-        }}
-      >
+      <ListItem disablePadding onClick={() => navigate('/dashboard')}>
         <ListItemButton>
           <ListItemIcon>
             <DashboardIcon />
