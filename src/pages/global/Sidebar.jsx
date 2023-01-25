@@ -1,4 +1,5 @@
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -57,6 +58,20 @@ const Sidebar = ({ sidebarItem, setSidebarItem }) => {
             <AdminPanelSettingsIcon />
           </ListItemIcon>
           <ListItemText primary="Change Password" />
+        </ListItemButton>
+      </ListItem>
+      <ListItem
+        disablePadding
+        onClick={() => setSidebarItem('dashboard')}
+        sx={{
+          background: sidebarItem === 'dashboard' && colors.blueAccent[1000],
+        }}
+      >
+        <ListItemButton>
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText primary="Dashboard" />
         </ListItemButton>
       </ListItem>
       <ListItem disablePadding>

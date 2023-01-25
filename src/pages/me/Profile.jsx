@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import { useState } from 'react';
+import Dashboard from '../Auth/Dashboard';
 import Sidebar from '../global/Sidebar';
 import ChangePassword from './ChangePassword';
 import Playlists from './Playlists';
@@ -31,6 +32,7 @@ const Profile = () => {
         {sidebarItem === 'settings' && <Settings />}
         {sidebarItem === 'password' && <ChangePassword />}
         {sidebarItem === 'playlists' && <Playlists />}
+        {sidebarItem === 'dashboard' && <Dashboard />}
       </Box>
     </Box>
   );
