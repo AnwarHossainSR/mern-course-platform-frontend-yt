@@ -1,4 +1,5 @@
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -9,11 +10,13 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { tokens, useMode } from '../../context/theme';
 
 const Sidebar = ({ sidebarItem, setSidebarItem }) => {
   const [theme] = useMode();
   const colors = tokens(theme.palette.mode);
+  const navigate = useNavigate();
 
   return (
     <List>
@@ -57,6 +60,14 @@ const Sidebar = ({ sidebarItem, setSidebarItem }) => {
             <AdminPanelSettingsIcon />
           </ListItemIcon>
           <ListItemText primary="Change Password" />
+        </ListItemButton>
+      </ListItem>
+      <ListItem disablePadding onClick={() => navigate('/dashboard')}>
+        <ListItemButton>
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText primary="Dashboard" />
         </ListItemButton>
       </ListItem>
       <ListItem disablePadding>

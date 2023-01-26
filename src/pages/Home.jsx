@@ -1,12 +1,21 @@
 import { Box, Button, Input, Stack, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import CourseCard from '../components/Cards/CourseCard';
 import { tokens, useMode } from '../context/theme';
+import { getCoursesAction } from '../redux/actions/CourseAction';
 
 const Home = () => {
+  const { courses } = useSelector((state) => state.course);
   const [selected, setSelected] = useState(0);
   const [theme] = useMode();
   const colors = tokens(theme.palette.mode);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (courses.length === 0) dispatch(getCoursesAction());
+  }, [courses]);
+
   return (
     <Stack
       sx={{
@@ -83,10 +92,10 @@ const Home = () => {
             flexDirection: 'row',
           }}
         >
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
+          {courses &&
+            courses.map((course) => (
+              <CourseCard key={course?._id} course={course} />
+            ))}
         </Stack>
       </Box>
     </Stack>
