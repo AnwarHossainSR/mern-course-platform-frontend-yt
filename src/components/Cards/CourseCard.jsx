@@ -26,8 +26,8 @@ const CourseCard = ({ course }) => {
     <Card sx={{ m: 2, width: 300 }}>
       <Box
         component="img"
-        src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
-        sx={{ width: '100%' }}
+        src={course?.poster?.url}
+        sx={{ width: '100%', height: '200px' }}
       />
       <Box sx={{ p: 2 }}>
         <Typography variant="h5" fontWeight="bold">
