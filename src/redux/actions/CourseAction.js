@@ -1,4 +1,4 @@
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import Api from '../../utils/api';
 import {
@@ -8,12 +8,12 @@ import {
   stopLoading,
 } from '../reducers/CourseSlice';
 
-import {getWhoAmIAction} from './UserAction';
+import { getWhoAmIAction } from './UserAction';
 
 export const getCoursesAction = (params) => async (dispatch) => {
   try {
     dispatch(courseLoading());
-    const res = await Api.get('/courses', {params});
+    const res = await Api.get('/courses', { params });
     dispatch(getCourses(res.courses));
   } catch (error) {
     dispatch(courseError(error.response.data));
