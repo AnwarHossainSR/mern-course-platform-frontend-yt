@@ -9,9 +9,12 @@ import {
 import { getWhoAmIAction } from './UserAction';
 
 export const getCoursesAction = (params) => async (dispatch) => {
+  console.log('called');
   try {
     dispatch(courseLoading());
-    const res = await Api.get('/courses', { params });
+    if (!params) params = '';
+    const res = await Api.get(`/courses${params}`);
+    console.log(res);
     dispatch(getCourses(res.courses));
   } catch (error) {
     dispatch(courseError(error.response.data));
