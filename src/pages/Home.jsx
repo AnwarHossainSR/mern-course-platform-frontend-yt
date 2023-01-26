@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CourseCard from '../components/Cards/CourseCard';
 import SearchFilter from '../components/Common/SearchFilter';
-import { tokens, useMode } from '../context/theme';
 import { getCoursesAction } from '../redux/actions/CourseAction';
 import { getQueryUrl, useQuery } from '../utils/helper';
 
@@ -12,8 +11,7 @@ const Home = () => {
   const category = query.get('category');
   const keyword = query.get('keyword');
   const { courses } = useSelector((state) => state.course);
-  const [theme] = useMode();
-  const colors = tokens(theme.palette.mode);
+
   const dispatch = useDispatch();
 
   const fetchCourses = async () => {
@@ -40,7 +38,7 @@ const Home = () => {
         alignItems: 'center',
       }}
     >
-      <SearchFilter colors={colors} />
+      <SearchFilter />
 
       <Box sx={{ flexGrow: 1 }}>
         <Stack

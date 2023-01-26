@@ -1,9 +1,12 @@
 import { Button, Input, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { tokens, useMode } from '../../context/theme';
 import { getQueryUrl, useQuery } from '../../utils/helper';
 
-const SearchFilter = ({ colors }) => {
+const SearchFilter = () => {
+  const [theme] = useMode();
+  const colors = tokens(theme.palette.mode);
   const [selected, setSelected] = useState('all');
   const navigate = useNavigate();
   const query = useQuery();
@@ -51,7 +54,9 @@ const SearchFilter = ({ colors }) => {
           variant="contained"
           sx={{
             background:
-              selected === 0 ? colors.blueAccent[200] : colors.blueAccent[100],
+              selected === 'all'
+                ? colors.blueAccent[200]
+                : colors.blueAccent[100],
             '&:hover': {
               background: colors.blueAccent[200],
             },
@@ -66,7 +71,9 @@ const SearchFilter = ({ colors }) => {
         <Button
           sx={{
             background:
-              selected === 1 ? colors.blueAccent[200] : colors.blueAccent[100],
+              selected === 'Web Development'
+                ? colors.blueAccent[200]
+                : colors.blueAccent[100],
             '&:hover': {
               background: colors.blueAccent[200],
             },
@@ -82,7 +89,9 @@ const SearchFilter = ({ colors }) => {
         <Button
           sx={{
             background:
-              selected === 2 ? colors.blueAccent[200] : colors.blueAccent[100],
+              selected === 'Data Science'
+                ? colors.blueAccent[200]
+                : colors.blueAccent[100],
             '&:hover': {
               background: colors.blueAccent[200],
             },
@@ -98,7 +107,9 @@ const SearchFilter = ({ colors }) => {
         <Button
           sx={{
             background:
-              selected === 3 ? colors.blueAccent[200] : colors.blueAccent[100],
+              selected === 'Machine Learning'
+                ? colors.blueAccent[200]
+                : colors.blueAccent[100],
             '&:hover': {
               background: colors.blueAccent[200],
             },

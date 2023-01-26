@@ -1,10 +1,23 @@
 import { Box, Button, Card, Input, Stack } from '@mui/material';
+import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import WhiteSpace from '../../components/Common/WhiteSpace';
 import { tokens, useMode } from '../../context/theme';
+import { getChangePasswordAction } from '../../redux/actions/UserAction';
 
 const ChangePassword = () => {
+  const dispatch = useDispatch();
   const [theme] = useMode();
   const colors = tokens(theme.palette.mode);
+  const cPasswordRef = useRef();
+  const nPasswordRef = useRef();
+  const handleChangePassword = () => {
+    const data = {
+      oldPassword: cPasswordRef.current.value,
+      newPassword: nPasswordRef.current.value,
+    };
+    dispatch(getChangePasswordAction(data));
+  };
   return (
     <Box
       sx={{
@@ -28,9 +41,16 @@ const ChangePassword = () => {
               gap: '1rem',
             }}
           >
-            <Input type="password" placeholder="Current password" />
-            <Input type="password" placeholder="New password" />
-            <Input type="password" placeholder="Confirm new password" />
+            <Input
+              type="password"
+              placeholder="Current password"
+              inputRef={cPasswordRef}
+            />
+            <Input
+              type="password"
+              placeholder="New password"
+              inputRef={nPasswordRef}
+            />
 
             <WhiteSpace />
 
@@ -42,6 +62,7 @@ const ChangePassword = () => {
                   background: colors.blueAccent[200],
                 },
               }}
+              onClick={handleChangePassword}
             >
               Changed Password
             </Button>
