@@ -1,15 +1,51 @@
 import { Box, Button, Card, Input, Stack } from '@mui/material';
+import { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import WhiteSpace from '../../components/Common/WhiteSpace';
+import {
+  getUpdateProfileAction,
+  getUpdateProfilePictureAction,
+} from '../../redux/actions/UserAction';
 
 const BasicInfo = ({ colors }) => {
+  const dispatch = useDispatch();
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const { user, isLoading } = useSelector((state) => state.user);
+  const handleUpdateData = () => {
+    const data = {
+      name: nameRef.current.value,
+      email: emailRef.current.value,
+    };
+    dispatch(getUpdateProfileAction(data));
+  };
   return (
     <>
       <Card sx={{ p: 2, m: 2, width: '40%' }}>
-        <Box
-          component="img"
-          src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
-          sx={{ width: '100%' }}
-        />
+        <Stack>
+          <Box component="img" src={user?.avatar?.url} sx={{ width: '100%' }} />
+          <Button
+            variant="contained"
+            component="label"
+            sx={{
+              background: colors.blueAccent[100],
+              '&:hover': {
+                background: colors.blueAccent[200],
+              },
+            }}
+          >
+            Change
+            <input
+              type="file"
+              hidden
+              onChange={(e) => {
+                const formData = new FormData();
+                formData.append('file', e.target.files[0]);
+                dispatch(getUpdateProfilePictureAction(formData));
+              }}
+            />
+          </Button>
+        </Stack>
       </Card>
       <Card sx={{ p: 2, m: 2, width: '50%' }}>
         <Stack
@@ -18,16 +54,25 @@ const BasicInfo = ({ colors }) => {
             p: 5,
           }}
         >
-          <Input placeholder=" Name" />
-          <Input placeholder="Email" />
+          <Input
+            placeholder=" Name"
+            defaultValue={user?.name}
+            inputRef={nameRef}
+          />
+          <Input
+            placeholder="Email"
+            defaultValue={user?.email}
+            inputRef={emailRef}
+          />
           <WhiteSpace height={20} />
           <Button
             variant="contained"
             sx={{
               background: colors.blueAccent[100],
             }}
+            onClick={handleUpdateData}
           >
-            Update
+            {isLoading ? 'Loading..' : 'Update'}
           </Button>
         </Stack>
       </Card>

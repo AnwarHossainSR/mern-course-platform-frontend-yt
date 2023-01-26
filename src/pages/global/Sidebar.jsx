@@ -10,13 +10,21 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { tokens, useMode } from '../../context/theme';
+import { getLogoutAction } from '../../redux/actions/UserAction';
 
 const Sidebar = ({ sidebarItem, setSidebarItem }) => {
   const [theme] = useMode();
   const colors = tokens(theme.palette.mode);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(getLogoutAction());
+    navigate('/');
+  };
 
   return (
     <List>
@@ -70,7 +78,7 @@ const Sidebar = ({ sidebarItem, setSidebarItem }) => {
           <ListItemText primary="Dashboard" />
         </ListItemButton>
       </ListItem>
-      <ListItem disablePadding>
+      <ListItem disablePadding onClick={handleLogout}>
         <ListItemButton>
           <ListItemIcon>
             <LogoutIcon />

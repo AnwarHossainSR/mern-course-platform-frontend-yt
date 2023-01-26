@@ -1,7 +1,9 @@
 import { Box, Stack, Typography } from '@mui/material';
-import CourseCard from '../../components/Cards/CourseCard';
+import { useSelector } from 'react-redux';
+import PlaylistCard from '../../components/Cards/PlayListCard';
 
 const Playlists = () => {
+  const { user } = useSelector((state) => state.user);
   return (
     <Stack>
       <Typography variant="h2" pl={3}>
@@ -13,13 +15,13 @@ const Playlists = () => {
           flexWrap: 'wrap',
         }}
       >
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
+        {user?.playlist?.map((item) => (
+          <PlaylistCard
+            key={item._id}
+            poster={item?.poster}
+            course={item?.course}
+          />
+        ))}
       </Box>
     </Stack>
   );
