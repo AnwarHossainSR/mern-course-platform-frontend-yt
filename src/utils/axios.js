@@ -2,15 +2,8 @@ import axios from 'axios';
 
 const token = localStorage.getItem('token');
 
-const api = axios.create({
-  baseURL: import.meta.env.baseURL,
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`,
-    post: {
-      'Content-Type': 'multipart/form-data',
-    },
-  },
-});
+axios.defaults.baseURL = 'http://localhost:4000/api/v1';
+axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+axios.defaults.headers.common['Content-Type'] = 'application/json';
 
-export default api;
+export default axios;

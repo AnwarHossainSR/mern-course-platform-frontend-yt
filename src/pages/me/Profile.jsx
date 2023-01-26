@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import Sidebar from '../global/Sidebar';
 import ChangePassword from './ChangePassword';
 import Playlists from './Playlists';
@@ -7,6 +8,13 @@ import Settings from './Settings';
 
 const Profile = () => {
   const [sidebarItem, setSidebarItem] = useState('playlists');
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      axios.defaults.headers.common[
+        'Authorization'
+      ] = `Bearer ${localStorage.getItem('token')}`;
+    }
+  }, []);
   return (
     <Box
       sx={{
