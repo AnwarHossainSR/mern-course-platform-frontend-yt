@@ -1,4 +1,4 @@
-import { Box, Stack } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CourseCard from '../components/Cards/CourseCard';
@@ -56,6 +56,9 @@ const Home = () => {
             courses.map((course) => (
               <CourseCard key={course?._id} course={course} />
             ))}
+          {courses.length === 0 && (
+            <Typography variant="h4">No courses found</Typography>
+          )}
         </Stack>
       </Box>
     </Stack>
