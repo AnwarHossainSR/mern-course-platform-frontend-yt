@@ -1,57 +1,51 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-  user: {},
-  isAuth: false,
-  isLoading: false,
-  error: null,
+  user : {},
+  isAuth : false,
+  isLoading : false,
+  error : null,
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name : 'user',
   initialState,
-  reducers: {
-    loading: (state) => {
-      state.isLoading = true;
-    },
-    clearError: (state) => {
-      state.error = null;
-    },
-    loginSuccess: (state, action) => {
+  reducers : {
+    loading : (state) => { state.isLoading = true; },
+    clearError : (state) => { state.error = null; },
+    loginSuccess : (state, action) => {
       state.isLoading = false;
       state.isAuth = true;
       state.user = action.payload;
     },
-    loginFail: (state, action) => {
+    loginFail : (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },
-    registerSuccess: (state, action) => {
+    registerSuccess : (state, action) => {
       state.isLoading = false;
       state.isAuth = true;
       state.user = action.payload;
     },
-    registerFail: (state, action) => {
+    registerFail : (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },
-    logoutSuccess: (state) => {
+    logoutSuccess : (state) => {
       state.isLoading = false;
       state.isAuth = false;
       state.user = {};
     },
-    logoutFail: (state, action) => {
+    logoutFail : (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },
-    whoami: (state, action) => {
+    whoami : (state, action) => {
       state.isLoading = false;
       state.isAuth = true;
       state.user = action.payload;
     },
-    stopLoading: (state) => {
-      state.isLoading = false;
-    },
+    stopLoading : (state) => { state.isLoading = false; },
   },
 });
 
