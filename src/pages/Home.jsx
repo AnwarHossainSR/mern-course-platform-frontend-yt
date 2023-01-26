@@ -1,20 +1,37 @@
-import { Box, Button, Input, Stack, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { Box, Stack, Typography } from '@mui/material';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CourseCard from '../components/Cards/CourseCard';
+import SearchFilter from '../components/Common/SearchFilter';
 import { tokens, useMode } from '../context/theme';
 import { getCoursesAction } from '../redux/actions/CourseAction';
+import { getQueryUrl, useQuery } from '../utils/helper';
 
 const Home = () => {
+  const query = useQuery();
+  const category = query.get('category');
+  const keyword = query.get('keyword');
   const { courses } = useSelector((state) => state.course);
-  const [selected, setSelected] = useState(0);
   const [theme] = useMode();
   const colors = tokens(theme.palette.mode);
   const dispatch = useDispatch();
 
+  const fetchCourses = async () => {
+    const cat = category || '';
+    const queryUrl = getQueryUrl({
+      keyword: keyword || '',
+      category: cat === 'all' ? '' : cat,
+    });
+    dispatch(getCoursesAction(`?${queryUrl}`));
+  };
+
   useEffect(() => {
-    if (courses.length === 0) dispatch(getCoursesAction());
-  }, [courses]);
+    if (category === null && keyword === null && courses.length === 0) {
+      dispatch(getCoursesAction());
+    } else {
+      fetchCourses();
+    }
+  }, [category, keyword]);
 
   return (
     <Stack
@@ -23,64 +40,7 @@ const Home = () => {
         alignItems: 'center',
       }}
     >
-      <Typography variant="h4">Coursecity Top Courses</Typography>
-
-      <Input sx={{ width: '40%', margin: '1rem' }} placeholder="Search" />
-
-      <Stack py={4} gap={1} direction="row">
-        <Button
-          variant="contained"
-          sx={{
-            background:
-              selected === 0 ? colors.blueAccent[200] : colors.blueAccent[100],
-            '&:hover': {
-              background: colors.blueAccent[200],
-            },
-          }}
-          onClick={() => setSelected(0)}
-        >
-          All
-        </Button>
-        <Button
-          sx={{
-            background:
-              selected === 1 ? colors.blueAccent[200] : colors.blueAccent[100],
-            '&:hover': {
-              background: colors.blueAccent[200],
-            },
-          }}
-          variant="contained"
-          onClick={() => setSelected(1)}
-        >
-          Web Development
-        </Button>
-        <Button
-          sx={{
-            background:
-              selected === 2 ? colors.blueAccent[200] : colors.blueAccent[100],
-            '&:hover': {
-              background: colors.blueAccent[200],
-            },
-          }}
-          variant="contained"
-          onClick={() => setSelected(2)}
-        >
-          Data Science
-        </Button>
-        <Button
-          sx={{
-            background:
-              selected === 3 ? colors.blueAccent[200] : colors.blueAccent[100],
-            '&:hover': {
-              background: colors.blueAccent[200],
-            },
-          }}
-          variant="contained"
-          onClick={() => setSelected(3)}
-        >
-          Machine Learning
-        </Button>
-      </Stack>
+      <SearchFilter colors={colors} />
 
       <Box sx={{ flexGrow: 1 }}>
         <Stack
@@ -96,6 +56,9 @@ const Home = () => {
             courses.map((course) => (
               <CourseCard key={course?._id} course={course} />
             ))}
+          {courses.length === 0 && (
+            <Typography variant="h4">No courses found</Typography>
+          )}
         </Stack>
       </Box>
     </Stack>
