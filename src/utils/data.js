@@ -1,5 +1,6 @@
 export const plansData = [
   {
+    id: 'price_1MUpmZLWaDeJF2fyYaVheukH',
     title: 'Basic',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia',
@@ -8,6 +9,7 @@ export const plansData = [
     durationText: 'mo',
   },
   {
+    id: 'price_1MUpmzLWaDeJF2fywWAkqeKO',
     title: 'Gold',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia',
@@ -16,6 +18,7 @@ export const plansData = [
     durationText: 'mo',
   },
   {
+    id: 'price_1MUpnELWaDeJF2fy2ngkYd8H',
     title: 'Premium',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia',
