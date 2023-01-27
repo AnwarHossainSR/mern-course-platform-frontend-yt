@@ -5,6 +5,7 @@ import {
   loading,
   loginFail,
   loginSuccess,
+  logoutSuccess,
   stopLoading,
   whoami,
 } from '../reducers/UserSlice';
@@ -37,7 +38,7 @@ export const getLogoutAction = () => async (dispatch) => {
   dispatch(loading());
   try {
     const res = await Api.get('/logout');
-    dispatch(loginSuccess({}));
+    dispatch(logoutSuccess());
     localStorage.removeItem('token');
     toast.success(res.message);
   } catch (error) {

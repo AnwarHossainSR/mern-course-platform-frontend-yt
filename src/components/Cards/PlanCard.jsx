@@ -1,7 +1,13 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { getSubscribeAction } from '../../redux/actions/PaymentAction';
 import WhiteSpace from '../Common/WhiteSpace';
 
 const PlanCard = ({ plan }) => {
+  const dispatch = useDispatch();
+  const handleSubscribe = (plan) => {
+    dispatch(getSubscribeAction({ plan }));
+  };
   return (
     <Stack
       sx={{
@@ -31,7 +37,9 @@ const PlanCard = ({ plan }) => {
         <Typography variant="h6">/{plan?.durationText}</Typography>
       </Box>
       <WhiteSpace height={230} />
-      <Button variant="contained">Subscribe</Button>
+      <Button variant="contained" onClick={() => handleSubscribe(plan?.id)}>
+        Subscribe
+      </Button>
     </Stack>
   );
 };

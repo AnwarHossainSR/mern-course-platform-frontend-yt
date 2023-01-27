@@ -9,6 +9,8 @@ import Dashboard from './pages/Auth/Dashboard';
 import ContactMe from './pages/ContactMe';
 import TopBar from './pages/global/Topbar';
 import Home from './pages/Home';
+import PaymentFail from './pages/me/PaymentFail';
+import PaymentSuccess from './pages/me/PaymentSuccess';
 import Profile from './pages/me/Profile';
 import NotFound from './pages/NotFound';
 import AdminAuthenticated from './pages/Proteted/AdminAuthenticated';
@@ -53,6 +55,8 @@ const App = () => {
               <Route path="/about" element={<About />} />
               <Route path="/me" element={<Authenticated />}>
                 <Route index element={<Profile />} />
+                <Route path="subscribe/success" element={<PaymentSuccess />} />
+                <Route path="subscribe/fail" element={<PaymentFail />} />
               </Route>
               <Route path="/dashboard" element={<AdminAuthenticated />}>
                 <Route index element={<Dashboard />} />
