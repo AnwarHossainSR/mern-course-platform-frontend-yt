@@ -1,20 +1,30 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  payment : null,
-  loading : false,
-  error : null,
+  payment: null,
+  loading: false,
+  error: null,
 };
 
 const paymentSlice = createSlice({
-  name : 'payment',
+  name: 'payment',
   initialState,
-  reducers : {
-    paymentLoading : (state) => { state.loading = true; },
-    stopLoading : (state) => { state.loading = false; },
-    paymentError : (state, action) => { state.error = action.payload; },
-    getPayment : (state, action) => { state.payment = action.payload; },
-    clearPayment : (state) => { state.payment = null; },
+  reducers: {
+    paymentLoading: (state) => {
+      state.loading = true;
+    },
+    stopLoading: (state) => {
+      state.loading = false;
+    },
+    paymentError: (state, action) => {
+      state.error = action.payload;
+    },
+    getPayment: (state, action) => {
+      state.payment = action.payload;
+    },
+    clearPayment: (state) => {
+      state.payment = null;
+    },
   },
 });
 

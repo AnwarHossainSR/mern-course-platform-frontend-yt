@@ -1,4 +1,4 @@
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import Api from '../../utils/api';
 import {
@@ -18,7 +18,7 @@ export const getLoginAction = (credentials) => async (dispatch) => {
     localStorage.setItem('token', res.token);
     toast.success(res.message);
   } catch (error) {
-    dispatch(loginFail({login : error?.response?.data?.message}));
+    dispatch(loginFail({ login: error?.response?.data?.message }));
   }
 };
 
@@ -30,7 +30,7 @@ export const getRegisterAction = (credentials) => async (dispatch) => {
     localStorage.setItem('token', res.token);
     toast.success(res.message);
   } catch (error) {
-    dispatch(loginFail({register : error?.response?.data?.message}));
+    dispatch(loginFail({ register: error?.response?.data?.message }));
   }
 };
 
@@ -42,7 +42,7 @@ export const getLogoutAction = () => async (dispatch) => {
     localStorage.removeItem('token');
     toast.success(res.message);
   } catch (error) {
-    dispatch(loginFail({logout : error?.response?.data?.message}));
+    dispatch(loginFail({ logout: error?.response?.data?.message }));
   }
 };
 
@@ -53,7 +53,7 @@ export const getWhoAmIAction = () => async (dispatch) => {
     dispatch(whoami(res.user));
   } catch (error) {
     localStorage.removeItem('token');
-    dispatch(loginFail({whoami : error?.response?.data?.message}));
+    dispatch(loginFail({ whoami: error?.response?.data?.message }));
   }
 };
 
@@ -65,7 +65,7 @@ export const getChangePasswordAction = (credentials) => async (dispatch) => {
     dispatch(stopLoading());
   } catch (error) {
     toast.error(error?.response?.data?.message);
-    dispatch(loginFail({changePassword : error?.response?.data?.message}));
+    dispatch(loginFail({ changePassword: error?.response?.data?.message }));
   }
 };
 
@@ -77,7 +77,7 @@ export const getUpdateProfileAction = (credentials) => async (dispatch) => {
     toast.success(res.message);
     dispatch(stopLoading());
   } catch (error) {
-    dispatch(loginFail({updateProfile : error?.response?.data?.message}));
+    dispatch(loginFail({ updateProfile: error?.response?.data?.message }));
   }
 };
 
