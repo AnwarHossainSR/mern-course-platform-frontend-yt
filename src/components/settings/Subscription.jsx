@@ -1,7 +1,10 @@
 import { Box, Chip, Typography } from '@mui/material';
+import moment from 'moment';
+import { useSelector } from 'react-redux';
 import WhiteSpace from '../Common/WhiteSpace';
 
 const Subscription = () => {
+  const { user } = useSelector((state) => state.user);
   return (
     <Box p={3}>
       <Typography variant="h5">Subscription Info</Typography>
@@ -16,11 +19,19 @@ const Subscription = () => {
             flexDirection: 'column',
           }}
         >
-          <Typography variant="p">Subscribe Date : 24th Nov, 2022</Typography>
-          <Typography variant="p">Expiry Date : 24th Nov, 2023</Typography>
-          <Typography variant="p">Plan : Basic</Typography>
           <Typography variant="p">
-            Status : <Chip label="Active" color="success" />
+            Subscribe Date :{' '}
+            {moment.unix(user?.subscription?.current_period_start).format('LL')}
+          </Typography>
+          <Typography variant="p">
+            Expiry Date :{' '}
+            {moment.unix(user?.subscription?.current_period_end).format('LL')}
+          </Typography>
+          <Typography variant="p">
+            Plan : {user?.subscription?.plan_name}
+          </Typography>
+          <Typography variant="p">
+            Status : <Chip label={user?.subscription?.status} color="success" />
           </Typography>
         </Box>
 

@@ -22,6 +22,12 @@ const Playlists = () => {
             course={item?.course}
           />
         ))}
+
+        {user?.playlist?.length === 0 && (
+          <p style={{ marginLeft: '2rem' }}>
+            You have not added any playlist yet
+          </p>
+        )}
       </Box>
     </Stack>
   );

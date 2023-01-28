@@ -5,8 +5,8 @@ import WhiteSpace from '../Common/WhiteSpace';
 
 const PlanCard = ({ plan }) => {
   const dispatch = useDispatch();
-  const handleSubscribe = (plan) => {
-    dispatch(getSubscribeAction({ plan }));
+  const handleSubscribe = (plan, title) => {
+    dispatch(getSubscribeAction({ plan, plan_name: title }));
   };
   return (
     <Stack
@@ -37,7 +37,10 @@ const PlanCard = ({ plan }) => {
         <Typography variant="h6">/{plan?.durationText}</Typography>
       </Box>
       <WhiteSpace height={230} />
-      <Button variant="contained" onClick={() => handleSubscribe(plan?.id)}>
+      <Button
+        variant="contained"
+        onClick={() => handleSubscribe(plan?.id, plan?.title)}
+      >
         Subscribe
       </Button>
     </Stack>

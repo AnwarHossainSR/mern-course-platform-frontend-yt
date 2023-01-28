@@ -1,6 +1,5 @@
 import Api from '../../utils/api';
 import {
-  getPayment,
   paymentError,
   paymentLoading,
   stopLoading,
@@ -11,7 +10,8 @@ export const getSubscribeAction = (plan) => async (dispatch) => {
     dispatch(paymentLoading());
     const res = await Api.post('/subscribe', plan);
     console.log(res);
-    dispatch(getPayment(res));
+    //redirect to payment page
+    window.location.href = res.url;
     dispatch(stopLoading());
   } catch (error) {
     console.log(error.response.data);
