@@ -10,7 +10,7 @@ const Home = () => {
   const query = useQuery();
   const category = query.get('category');
   const keyword = query.get('keyword');
-  const { courses } = useSelector((state) => state.course);
+  const { courses, isLoading } = useSelector((state) => state.course);
 
   const dispatch = useDispatch();
 
@@ -50,11 +50,12 @@ const Home = () => {
             flexDirection: 'row',
           }}
         >
+          {isLoading && <Typography variant="h4">Loading...</Typography>}
           {courses &&
             courses.map((course) => (
               <CourseCard key={course?._id} course={course} />
             ))}
-          {courses.length === 0 && (
+          {!isLoading && courses.length === 0 && (
             <Typography variant="h4">No courses found</Typography>
           )}
         </Stack>

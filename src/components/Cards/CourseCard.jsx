@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { tokens, useMode } from '../../context/theme';
 import { addToPlaylistAction } from '../../redux/actions/CourseAction';
 
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, type }) => {
   const [selectedId, setSelectedId] = useState('');
   const { isLoading } = useSelector((state) => state.course);
   const dispatch = useDispatch();
@@ -20,6 +20,10 @@ const CourseCard = ({ course }) => {
   const handleAddToPlaylist = (courseId) => {
     setSelectedId(courseId);
     dispatch(addToPlaylistAction({ id: courseId }));
+  };
+
+  const handleRemoveFromPlaylist = (courseId) => {
+    console.log(courseId);
   };
 
   return (
@@ -78,9 +82,15 @@ const CourseCard = ({ course }) => {
                 },
               }}
               variant="contained"
-              onClick={() => handleAddToPlaylist(course?._id)}
+              onClick={() => {
+                type && type === 'playlist'
+                  ? handleRemoveFromPlaylist(course._id)
+                  : handleAddToPlaylist(course._id);
+              }}
             >
-              Add to Playlist
+              {type && type === 'playlist'
+                ? 'Remove Course'
+                : 'Add to playlist'}
             </Button>
           )}
         </Stack>

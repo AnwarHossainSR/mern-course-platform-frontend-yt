@@ -17,6 +17,7 @@ const Subscription = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
+            gap: '10px',
           }}
         >
           <Typography variant="p">
@@ -28,10 +29,22 @@ const Subscription = () => {
             {moment.unix(user?.subscription?.current_period_end).format('LL')}
           </Typography>
           <Typography variant="p">
-            Plan : {user?.subscription?.plan_name}
+            Plan :{' '}
+            <Typography variant="p" fontWeight="bold">
+              {user?.subscription?.plan_name}
+            </Typography>
           </Typography>
           <Typography variant="p">
-            Status : <Chip label={user?.subscription?.status} color="success" />
+            Status :{' '}
+            <Chip
+              label={user?.subscription?.status}
+              color={
+                user?.subscription?.status == 'active' ? 'success' : 'warning'
+              }
+              sx={{
+                textTransform: 'capitalize',
+              }}
+            />
           </Typography>
         </Box>
 

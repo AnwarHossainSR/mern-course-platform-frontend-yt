@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
-import PlaylistCard from '../../components/Cards/PlayListCard';
+import CourseCard from '../../components/Cards/CourseCard';
 
 const Playlists = () => {
   const { user } = useSelector((state) => state.user);
@@ -16,11 +16,7 @@ const Playlists = () => {
         }}
       >
         {user?.playlist?.map((item) => (
-          <PlaylistCard
-            key={item._id}
-            poster={item?.poster}
-            course={item?.course}
-          />
+          <CourseCard key={item._id} course={item} type="playlist" />
         ))}
 
         {user?.playlist?.length === 0 && (
