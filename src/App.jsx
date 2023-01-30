@@ -1,10 +1,10 @@
 import { Box, Stack, ThemeProvider } from '@mui/material';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { ColorModeContext, tokens, useMode } from './context/theme';
 import About from './pages/About';
-import Dashboard from './pages/Auth/admin/Dashboard';
+import AdminLayout from './pages/AdminLayout';
 import Auth from './pages/Auth/Auth';
 import ContactMe from './pages/ContactMe';
 import TopBar from './pages/global/Topbar';
@@ -14,12 +14,10 @@ import PaymentFail from './pages/me/PaymentFail';
 import PaymentSuccess from './pages/me/PaymentSuccess';
 import Profile from './pages/me/Profile';
 import NotFound from './pages/NotFound';
-import AdminAuthenticated from './pages/Proteted/AdminAuthenticated';
 import Authenticated from './pages/Proteted/Authenticated';
 import { getWhoAmIAction } from './redux/actions/UserAction';
-import AdminCourses from './pages/Auth/admin/AdminCourses';
-import AdmnCourseDetails from './pages/Auth/admin/AdminCourseDetails';
 const App = () => {
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.user);
   const [theme, colorMode] = useMode();
@@ -30,6 +28,8 @@ const App = () => {
       dispatch(getWhoAmIAction());
     }
   }, [isAuth]);
+
+  if (pathname.startsWith('/admin')) return <AdminLayout />;
 
   return (
     <ColorModeContext.Provider value={colorMode}>
@@ -61,13 +61,6 @@ const App = () => {
                 <Route path="subscribe/fail" element={<PaymentFail />} />
                 <Route path="courses/">
                   <Route path=":id" element={<CourseDetails />} />
-                </Route>
-              </Route>
-              <Route path="/admin/" element={<AdminAuthenticated />}>
-                <Route path="dashboard" element={<Dashboard />} />
-                <Route path="courses/">
-                  <Route index element={<AdminCourses />} />
-                  <Route path=":id" element={<AdmnCourseDetails />} />
                 </Route>
               </Route>
               <Route path="*" element={<NotFound />} />
