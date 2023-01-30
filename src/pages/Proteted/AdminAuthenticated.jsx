@@ -1,9 +1,17 @@
-import { Outlet } from 'react-router-dom';
-import Auth from '../Auth/Auth';
+import { useSelector } from 'react-redux';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const AdminAuthenticated = () => {
-  const isAuth = true;
-  return isAuth ? <Outlet /> : <Auth />;
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.user);
+  if (user?.role !== 'admin') {
+    navigate('/me');
+    // navigate('/me', {
+    //   state: { message: 'You are not authorized to access this page.' },
+    // });
+  }
+
+  return <Outlet />;
 };
 
 export default AdminAuthenticated;

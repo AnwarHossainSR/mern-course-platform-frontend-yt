@@ -1,12 +1,15 @@
 import { Box } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Sidebar from '../global/Sidebar';
 import ChangePassword from './ChangePassword';
 import Playlists from './Playlists';
 import Settings from './Settings';
 
 const Profile = () => {
+  const { state } = useLocation();
   const [sidebarItem, setSidebarItem] = useState('playlists');
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -15,6 +18,9 @@ const Profile = () => {
       ] = `Bearer ${localStorage.getItem('token')}`;
     }
   }, []);
+
+  if (state?.message) toast.error(state.message);
+
   return (
     <Box
       sx={{
