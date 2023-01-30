@@ -1,4 +1,5 @@
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
+
 import Api from '../../utils/api';
 import {
   paymentError,
@@ -11,7 +12,7 @@ export const getSubscribeAction = (plan) => async (dispatch) => {
     dispatch(paymentLoading());
     const res = await Api.post('/subscribe', plan);
     console.log(res);
-    //redirect to payment page
+    // redirect to payment page
     window.location.href = res.url;
     dispatch(stopLoading());
   } catch (error) {
