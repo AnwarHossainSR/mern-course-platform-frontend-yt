@@ -8,10 +8,15 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { tokens, useMode } from '../../context/theme';
-import { addToPlaylistAction } from '../../redux/actions/CourseAction';
+import {
+  addToPlaylistAction,
+  removeFromPlaylistAction,
+} from '../../redux/actions/CourseAction';
 
 const CourseCard = ({ course, type }) => {
+  const navigate = useNavigate();
   const [selectedId, setSelectedId] = useState('');
   const { isLoading } = useSelector((state) => state.course);
   const dispatch = useDispatch();
@@ -23,7 +28,11 @@ const CourseCard = ({ course, type }) => {
   };
 
   const handleRemoveFromPlaylist = (courseId) => {
-    console.log(courseId);
+    dispatch(removeFromPlaylistAction(courseId));
+  };
+
+  const handleWatchNow = (courseId) => {
+    navigate(`/me/courses/${courseId}`);
   };
 
   return (
@@ -38,7 +47,7 @@ const CourseCard = ({ course, type }) => {
           {course?.title}
         </Typography>
         <Typography variant="body1">
-          {course?.description.substring(0, 100)}
+          {course?.description?.substring(0, 100)}
         </Typography>
         <Stack direction="column" spacing={1} sx={{ mt: 2 }}>
           <Typography variant="h5" fontWeight="bold">
@@ -68,6 +77,9 @@ const CourseCard = ({ course, type }) => {
               },
             }}
             variant="contained"
+            onClick={() => {
+              handleWatchNow(course._id);
+            }}
           >
             Watch Now
           </Button>

@@ -132,7 +132,7 @@ const Auth = () => {
                 }}
                 onClick={handleLogin}
               >
-                {isLoading ? <CircularProgress /> : 'Login'}
+                {isLoading ? <CircularProgress size={20} /> : 'Login'}
               </Button>
             </Stack>
           )}
@@ -158,7 +158,7 @@ const Auth = () => {
                 }}
                 onClick={handleRegister}
               >
-                Sign Up
+                {isLoading ? <CircularProgress size={20} /> : 'Sign Up'}
               </Button>
             </Stack>
           )}

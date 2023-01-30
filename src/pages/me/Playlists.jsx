@@ -15,9 +15,10 @@ const Playlists = () => {
           flexWrap: 'wrap',
         }}
       >
-        {user?.playlist?.map((item) => (
-          <CourseCard key={item._id} course={item} type="playlist" />
-        ))}
+        {user?.playlist?.length > 0 &&
+          user?.playlist?.map((item) => (
+            <CourseCard key={item._id} course={item} type="playlist" />
+          ))}
 
         {user?.playlist?.length === 0 && (
           <p style={{ marginLeft: '2rem' }}>
