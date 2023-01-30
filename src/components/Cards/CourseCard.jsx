@@ -8,10 +8,15 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { tokens, useMode } from '../../context/theme';
-import { addToPlaylistAction } from '../../redux/actions/CourseAction';
+import {
+  addToPlaylistAction,
+  removeFromPlaylistAction,
+} from '../../redux/actions/CourseAction';
 
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, type }) => {
+  const navigate = useNavigate();
   const [selectedId, setSelectedId] = useState('');
   const { isLoading } = useSelector((state) => state.course);
   const dispatch = useDispatch();
@@ -20,6 +25,14 @@ const CourseCard = ({ course }) => {
   const handleAddToPlaylist = (courseId) => {
     setSelectedId(courseId);
     dispatch(addToPlaylistAction({ id: courseId }));
+  };
+
+  const handleRemoveFromPlaylist = (courseId) => {
+    dispatch(removeFromPlaylistAction(courseId));
+  };
+
+  const handleWatchNow = (courseId) => {
+    navigate(`/me/courses/${courseId}`);
   };
 
   return (
@@ -34,7 +47,7 @@ const CourseCard = ({ course }) => {
           {course?.title}
         </Typography>
         <Typography variant="body1">
-          {course?.description.substring(0, 100)}
+          {course?.description?.substring(0, 100)}
         </Typography>
         <Stack direction="column" spacing={1} sx={{ mt: 2 }}>
           <Typography variant="h5" fontWeight="bold">
@@ -64,6 +77,9 @@ const CourseCard = ({ course }) => {
               },
             }}
             variant="contained"
+            onClick={() => {
+              handleWatchNow(course._id);
+            }}
           >
             Watch Now
           </Button>
@@ -78,9 +94,15 @@ const CourseCard = ({ course }) => {
                 },
               }}
               variant="contained"
-              onClick={() => handleAddToPlaylist(course?._id)}
+              onClick={() => {
+                type && type === 'playlist'
+                  ? handleRemoveFromPlaylist(course._id)
+                  : handleAddToPlaylist(course._id);
+              }}
             >
-              Add to Playlist
+              {type && type === 'playlist'
+                ? 'Remove Course'
+                : 'Add to playlist'}
             </Button>
           )}
         </Stack>

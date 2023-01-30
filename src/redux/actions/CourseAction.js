@@ -33,3 +33,26 @@ export const addToPlaylistAction = (courseId) => async (dispatch) => {
     toast.error(error.response.data.message);
   }
 };
+
+export const removeFromPlaylistAction = (courseId) => async (dispatch) => {
+  try {
+    dispatch(courseLoading());
+    const res = await Api.delete(`/remove-from-playlist?id=${courseId}`);
+    dispatch(getWhoAmIAction());
+    dispatch(stopLoading());
+    toast.success(res.message);
+  } catch (error) {
+    dispatch(stopLoading());
+    toast.error(error.response.data.message);
+  }
+};
+
+export const getCourseAction = (id) => async (dispatch) => {
+  try {
+    dispatch(courseLoading());
+    const res = await Api.get(`/course/${id}`);
+    dispatch(getCourses(res.course));
+  } catch (error) {
+    dispatch(courseError(error.response.data));
+  }
+};

@@ -9,6 +9,7 @@ import Dashboard from './pages/Auth/Dashboard';
 import ContactMe from './pages/ContactMe';
 import TopBar from './pages/global/Topbar';
 import Home from './pages/Home';
+import CourseDetails from './pages/me/CourseDetails';
 import PaymentFail from './pages/me/PaymentFail';
 import PaymentSuccess from './pages/me/PaymentSuccess';
 import Profile from './pages/me/Profile';
@@ -57,6 +58,9 @@ const App = () => {
                 <Route index element={<Profile />} />
                 <Route path="subscribe/success" element={<PaymentSuccess />} />
                 <Route path="subscribe/fail" element={<PaymentFail />} />
+                <Route path="courses/">
+                  <Route path=":id" element={<CourseDetails />} />
+                </Route>
               </Route>
               <Route path="/dashboard" element={<AdminAuthenticated />}>
                 <Route index element={<Dashboard />} />
