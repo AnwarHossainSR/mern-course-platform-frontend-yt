@@ -10,12 +10,13 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { tokens, useMode } from '../../context/theme';
 import { getLogoutAction } from '../../redux/actions/UserAction';
 
 const Sidebar = ({ sidebarItem, setSidebarItem }) => {
+  const { user } = useSelector((state) => state.user);
   const [theme] = useMode();
   const colors = tokens(theme.palette.mode);
   const navigate = useNavigate();
@@ -28,20 +29,33 @@ const Sidebar = ({ sidebarItem, setSidebarItem }) => {
 
   return (
     <List>
-      <ListItem
-        disablePadding
-        onClick={() => setSidebarItem('playlists')}
-        sx={{
-          background: sidebarItem === 'playlists' && colors.blueAccent[1000],
-        }}
-      >
-        <ListItemButton>
-          <ListItemIcon>
-            <PlayCircleIcon />
-          </ListItemIcon>
-          <ListItemText primary="My Playlists" />
-        </ListItemButton>
-      </ListItem>
+      {user?.role === 'admin' && (
+        <ListItem disablePadding onClick={() => navigate('/admin/dashboard')}>
+          <ListItemButton>
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" />
+          </ListItemButton>
+        </ListItem>
+      )}
+      {user?.role !== 'admin' && (
+        <ListItem
+          disablePadding
+          onClick={() => setSidebarItem('playlists')}
+          sx={{
+            background: sidebarItem === 'playlists' && colors.blueAccent[1000],
+          }}
+        >
+          <ListItemButton>
+            <ListItemIcon>
+              <PlayCircleIcon />
+            </ListItemIcon>
+            <ListItemText primary="My Playlists" />
+          </ListItemButton>
+        </ListItem>
+      )}
+
       <ListItem
         disablePadding
         onClick={() => setSidebarItem('settings')}
@@ -70,14 +84,7 @@ const Sidebar = ({ sidebarItem, setSidebarItem }) => {
           <ListItemText primary="Change Password" />
         </ListItemButton>
       </ListItem>
-      <ListItem disablePadding onClick={() => navigate('/dashboard')}>
-        <ListItemButton>
-          <ListItemIcon>
-            <DashboardIcon />
-          </ListItemIcon>
-          <ListItemText primary="Dashboard" />
-        </ListItemButton>
-      </ListItem>
+
       <ListItem disablePadding onClick={handleLogout}>
         <ListItemButton>
           <ListItemIcon>

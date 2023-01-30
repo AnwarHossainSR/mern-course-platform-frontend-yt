@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import Api from '../../utils/api';
 import {
   paymentError,
@@ -14,7 +15,7 @@ export const getSubscribeAction = (plan) => async (dispatch) => {
     window.location.href = res.url;
     dispatch(stopLoading());
   } catch (error) {
-    console.log(error.response.data);
+    toast.error(error.response.data.message);
     dispatch(paymentError(error.response.data));
   }
 };

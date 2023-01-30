@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { ColorModeContext, tokens, useMode } from './context/theme';
 import About from './pages/About';
+import Dashboard from './pages/Auth/admin/Dashboard';
 import Auth from './pages/Auth/Auth';
-import Dashboard from './pages/Auth/Dashboard';
 import ContactMe from './pages/ContactMe';
 import TopBar from './pages/global/Topbar';
 import Home from './pages/Home';
@@ -17,7 +17,8 @@ import NotFound from './pages/NotFound';
 import AdminAuthenticated from './pages/Proteted/AdminAuthenticated';
 import Authenticated from './pages/Proteted/Authenticated';
 import { getWhoAmIAction } from './redux/actions/UserAction';
-
+import AdminCourses from './pages/Auth/admin/AdminCourses';
+import AdmnCourseDetails from './pages/Auth/admin/AdminCourseDetails';
 const App = () => {
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.user);
@@ -62,8 +63,12 @@ const App = () => {
                   <Route path=":id" element={<CourseDetails />} />
                 </Route>
               </Route>
-              <Route path="/dashboard" element={<AdminAuthenticated />}>
-                <Route index element={<Dashboard />} />
+              <Route path="/admin/" element={<AdminAuthenticated />}>
+                <Route path="dashboard" element={<Dashboard />} />
+                <Route path="courses/">
+                  <Route index element={<AdminCourses />} />
+                  <Route path=":id" element={<AdmnCourseDetails />} />
+                </Route>
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
