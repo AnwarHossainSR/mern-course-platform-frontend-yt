@@ -9,12 +9,10 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { createCourseAction } from '../../../redux/actions/CourseAction';
 
 const CreateCourse = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [image, setImage] = useState(null);
   const [course, setCourse] = useState({
@@ -42,7 +40,14 @@ const CreateCourse = () => {
     formData.append('description', course.description);
     formData.append('file', course.file);
     dispatch(createCourseAction(formData));
-    navigate('../');
+    setCourse({
+      title: '',
+      createdBy: '',
+      category: '',
+      description: '',
+      file: '',
+    });
+    setImage(null);
   };
   return (
     <Box>
