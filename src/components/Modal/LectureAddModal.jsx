@@ -32,7 +32,7 @@ export default function LectureAddModal({ open, setOpen, courseId }) {
     const formData = new FormData();
     formData.append('title', titleRef.current.value);
     formData.append('description', descriptionRef.current.value);
-    formData.append('video', video);
+    formData.append('file', video);
     dispatch(addLectureAction(courseId, formData));
   };
 
