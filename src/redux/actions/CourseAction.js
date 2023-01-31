@@ -1,6 +1,7 @@
 import { toast } from 'react-toastify';
 import Api from '../../utils/api';
 import {
+  courseDelete,
   courseError,
   courseLoading,
   getCourses,
@@ -59,10 +60,23 @@ export const createCourseAction = (course) => async (dispatch) => {
   try {
     dispatch(courseLoading());
     const res = await Api.post('/create-course', course);
-    console.log(res);
+    dispatch(stopLoading());
     toast.success(res.message);
   } catch (error) {
-    console.log(error);
+    dispatch(stopLoading());
+    toast.error(error.response.data.message);
+    dispatch(courseError(error.response.data));
+  }
+};
+
+export const deleteCourseAction = (courseId) => async (dispatch) => {
+  try {
+    dispatch(courseLoading());
+    const res = await Api.delete(`/course/${courseId}`);
+    dispatch(courseDelete(courseId));
+    toast.success(res.message);
+  } catch (error) {
+    dispatch(stopLoading());
     toast.error(error.response.data.message);
     dispatch(courseError(error.response.data));
   }

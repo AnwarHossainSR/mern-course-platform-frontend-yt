@@ -1,9 +1,18 @@
 import { Button, Stack } from '@mui/material';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import CourseTable from '../../../components/Tables/CourseTable';
+import { getCoursesAction } from '../../../redux/actions/CourseAction';
 
 const AdminCourses = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCoursesAction());
+  }, [dispatch]);
+
   return (
     <Stack
       sx={{
@@ -22,7 +31,7 @@ const AdminCourses = () => {
           Add Course
         </Button>
       </Stack>
-      <Stack>
+      <Stack pb={3}>
         <CourseTable />
       </Stack>
     </Stack>
