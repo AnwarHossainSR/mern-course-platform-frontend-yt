@@ -8,11 +8,12 @@ import {
   Stack,
 } from '@mui/material';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { createCourseAction } from '../../../redux/actions/CourseAction';
 
 const CreateCourse = () => {
+  const { isLoading } = useSelector((state) => state.course);
   const dispatch = useDispatch();
   const [image, setImage] = useState(null);
   const [course, setCourse] = useState({
@@ -40,14 +41,14 @@ const CreateCourse = () => {
     formData.append('description', course.description);
     formData.append('file', course.file);
     dispatch(createCourseAction(formData));
-    setCourse({
-      title: '',
-      createdBy: '',
-      category: '',
-      description: '',
-      file: '',
-    });
-    setImage(null);
+    // setCourse({
+    //   title: '',
+    //   createdBy: '',
+    //   category: '',
+    //   description: '',
+    //   file: '',
+    // });
+    // setImage(null);
   };
   return (
     <Box>
@@ -166,7 +167,7 @@ const CreateCourse = () => {
               }}
               type="submit"
             >
-              Create Course
+              {isLoading ? 'Loading...' : 'Create Course'}
             </Button>
             {image && (
               <img src={image} alt="avatar" width="350px" height="250px" />
