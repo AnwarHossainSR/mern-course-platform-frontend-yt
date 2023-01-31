@@ -109,9 +109,11 @@ export const addLectureAction = (id, lecture) => async (dispatch) => {
   try {
     dispatch(courseLoading());
     const res = await Api.post(`/course/${id}`, lecture);
+    console.log(res);
     dispatch(getCourseLectureAction(id));
     toast.success(res.message);
   } catch (error) {
+    console.log(error);
     dispatch(courseError(error.response.data));
     toast.error(error.response.data.message);
   }
