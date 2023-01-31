@@ -4,6 +4,7 @@ const initialState = {
   courses: [],
   isLoading: false,
   error: null,
+  course: {},
 };
 
 const courseSlice = createSlice({
@@ -39,6 +40,10 @@ const courseSlice = createSlice({
     stopLoading: (state) => {
       state.isLoading = false;
     },
+    courseDetails: (state, { payload }) => {
+      state.isLoading = false;
+      state.course = payload;
+    },
   },
 });
 
@@ -50,6 +55,7 @@ export const {
   courseUpdate,
   courseDelete,
   stopLoading,
+  courseDetails,
 } = courseSlice.actions;
 
 export default courseSlice.reducer;
