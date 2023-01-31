@@ -1,6 +1,6 @@
 import { Box, Stack, ThemeProvider } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
-import { ColorModeContext, tokens, useMode } from '../context/theme';
+import { ColorModeContext } from '../context/theme';
 import AdminCourseDetails from './Auth/admin/AdminCourseDetails';
 import AdminCourses from './Auth/admin/AdminCourses';
 import Dashboard from './Auth/admin/Dashboard';
@@ -8,9 +8,7 @@ import AdminSidebar from './global/AdminSidebar';
 import TopBar from './global/Topbar';
 import AdminAuthenticated from './Proteted/AdminAuthenticated';
 
-const AdminLayout = () => {
-  const [theme, colorMode] = useMode();
-  const colors = tokens(theme.palette.mode);
+const AdminLayout = ({ theme, colorMode, colors }) => {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
@@ -34,7 +32,7 @@ const AdminLayout = () => {
           >
             <AdminSidebar />
             <Routes>
-              <Route path="/admin/" element={<AdminAuthenticated />}>
+              <Route path="admin/" element={<AdminAuthenticated />}>
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="courses/">
                   <Route index element={<AdminCourses />} />

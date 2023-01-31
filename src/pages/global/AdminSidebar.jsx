@@ -32,13 +32,7 @@ const AdminSidebar = () => {
         </ListItemButton>
       </ListItem>
 
-      <ListItem
-        disablePadding
-        // onClick={() => setSidebarItem('playlists')}
-        // sx={{
-        //   background: sidebarItem === 'playlists' && colors.blueAccent[1000],
-        // }}
-      >
+      <ListItem disablePadding onClick={() => navigate('/admin/courses')}>
         <ListItemButton>
           <ListItemIcon>
             <PlayCircleIcon />
