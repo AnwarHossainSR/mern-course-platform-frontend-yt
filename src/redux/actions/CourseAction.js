@@ -54,3 +54,16 @@ export const getCourseAction = (id) => async (dispatch) => {
     dispatch(courseError(error.response.data));
   }
 };
+
+export const createCourseAction = (course) => async (dispatch) => {
+  try {
+    dispatch(courseLoading());
+    const res = await Api.post('/create-course', course);
+    console.log(res);
+    toast.success(res.message);
+  } catch (error) {
+    console.log(error);
+    toast.error(error.response.data.message);
+    dispatch(courseError(error.response.data));
+  }
+};
