@@ -8,3 +8,8 @@ export const getQueryUrl = (params) => {
     .map((key) => `${key}=${params[key]}`)
     .join('&');
 };
+
+export const getCourseFromId = (courses, id) => {
+  const course = courses.find((course) => course._id === id);
+  console.log('course', course);
+};
