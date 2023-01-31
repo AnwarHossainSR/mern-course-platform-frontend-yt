@@ -1,15 +1,17 @@
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { Box, Button, Card, CardMedia, Stack, Typography } from '@mui/material';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { assets } from '../../../assets';
+import LectureAddModal from '../../../components/Modal/LectureAddModal';
 import {
   getCourseLectureAction,
   removeLectureAction,
 } from '../../../redux/actions/CourseAction';
 
 const AdminCourseDetails = () => {
+  const [open, setOpen] = useState(false);
   const { course } = useSelector((state) => state.course);
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -41,6 +43,7 @@ const AdminCourseDetails = () => {
           sx={{
             height: '40px',
           }}
+          onClick={() => setOpen(true)}
         >
           Add New Lecture
         </Button>
@@ -91,6 +94,7 @@ const AdminCourseDetails = () => {
           </Card>
         ))}
       </Box>
+      {open && <LectureAddModal open={open} setOpen={setOpen} courseId={id} />}
     </Box>
   );
 };
