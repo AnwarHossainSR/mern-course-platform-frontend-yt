@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify';
+
 import Api from '../../utils/api';
 import {
   courseDelete,
@@ -8,6 +9,7 @@ import {
   getCourses,
   stopLoading,
 } from '../reducers/CourseSlice';
+
 import { getWhoAmIAction } from './UserAction';
 
 export const getCoursesAction = (params) => async (dispatch) => {
