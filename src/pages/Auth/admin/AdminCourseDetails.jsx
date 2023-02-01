@@ -3,7 +3,6 @@ import { Box, Button, Card, CardMedia, Stack, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { assets } from '../../../assets';
 import LectureAddModal from '../../../components/Modal/LectureAddModal';
 import {
   getCourseLectureAction,
@@ -60,9 +59,8 @@ const AdminCourseDetails = () => {
               component="video"
               width="100%"
               height="100%"
-              src={assets?.demoVideo}
+              src={lecture?.video?.url}
               controls
-              autoPlay
             />
             <Stack
               sx={{
