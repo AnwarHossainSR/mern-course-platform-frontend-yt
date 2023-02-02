@@ -50,7 +50,7 @@ const TopBar = () => {
       >
         <Link to="/">Home</Link>
         <Link to="/contact">Contact</Link>
-        <Link to="/about">About</Link>
+        <Link to="/request-course">Request</Link>
       </Box>
       <Box display="flex">
         <IconButton onClick={colorMode.toggleColorMode}>
