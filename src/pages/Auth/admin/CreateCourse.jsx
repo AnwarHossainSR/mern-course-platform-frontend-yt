@@ -41,14 +41,6 @@ const CreateCourse = () => {
     formData.append('description', course.description);
     formData.append('file', course.file);
     dispatch(createCourseAction(formData));
-    // setCourse({
-    //   title: '',
-    //   createdBy: '',
-    //   category: '',
-    //   description: '',
-    //   file: '',
-    // });
-    // setImage(null);
   };
   return (
     <Box>

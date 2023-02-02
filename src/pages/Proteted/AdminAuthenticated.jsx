@@ -9,7 +9,7 @@ const AdminAuthenticated = () => {
 
   if (isLoading) return null;
 
-  if (user?.role !== 'admin') {
+  if (user?.role && user?.role !== 'admin') {
     navigate('/me');
     // navigate('/me', {
     //   state: { message: 'You are not authorized to access this page.' },

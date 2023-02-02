@@ -2,6 +2,7 @@ import { toast } from 'react-toastify';
 
 import Api from '../../utils/api';
 import {
+  getUsers,
   loading,
   loginFail,
   loginSuccess,
@@ -77,6 +78,7 @@ export const getUpdateProfileAction = (credentials) => async (dispatch) => {
     toast.success(res.message);
     dispatch(stopLoading());
   } catch (error) {
+    toast.error(error?.response?.data?.message);
     dispatch(loginFail({ updateProfile: error?.response?.data?.message }));
   }
 };
@@ -89,7 +91,46 @@ export const getUpdateProfilePictureAction = (file) => async (dispatch) => {
     toast.success(res.message);
     dispatch(stopLoading());
   } catch (error) {
-    console.log(error);
     toast.error(error?.response?.data?.message);
+    toast.error(error?.response?.data?.message);
+  }
+};
+
+export const getAdminUsersAction = () => async (dispatch) => {
+  dispatch(loading());
+  try {
+    const res = await Api.get('/admin/users');
+    console.log(res);
+    dispatch(getUsers(res.users));
+    dispatch(stopLoading());
+  } catch (error) {
+    console.log(error);
+    dispatch(loginFail({ adminUsers: error?.response?.data?.message }));
+  }
+};
+
+export const getAdminDeleteUserAction = (id) => async (dispatch) => {
+  dispatch(loading());
+  try {
+    const res = await Api.delete(`/admin/user/${id}`);
+    dispatch(getAdminUsersAction());
+    toast.success(res.message);
+    dispatch(stopLoading());
+  } catch (error) {
+    console.log(error);
+    dispatch(loginFail({ adminDeleteUser: error?.response?.data?.message }));
+  }
+};
+
+export const getAdminUpdateUserRoleAction = (id) => async (dispatch) => {
+  dispatch(loading());
+  try {
+    const res = await Api.put(`/admin/users/${id}`);
+    dispatch(getAdminUsersAction());
+    toast.success(res.message);
+    dispatch(stopLoading());
+  } catch (error) {
+    console.log(error);
+    dispatch(loginFail({ adminUpdateUser: error?.response?.data?.message }));
   }
 };
