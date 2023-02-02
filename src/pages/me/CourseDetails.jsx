@@ -1,13 +1,24 @@
 import { Box, Card, CardMedia, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { assets } from '../../assets';
 import { tokens, useMode } from '../../context/theme';
+import { getCourseLectureAction } from '../../redux/actions/CourseAction';
 
 const CourseDetails = () => {
-  const [lectureItem, setLectureItem] = useState(0);
   const [theme] = useMode();
   const colors = tokens(theme.palette.mode);
-
+  const { course } = useSelector((state) => state.course);
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const [lectureItem, setLectureItem] = useState(course?.lectures?.[0] ?? {});
+  useEffect(() => {
+    dispatch(getCourseLectureAction(id));
+  }, [id]);
+  useEffect(() => {
+    if (course?.lectures?.length > 0) setLectureItem(course?.lectures?.[0]);
+  }, [course]);
   return (
     <Box
       sx={{
@@ -26,7 +37,7 @@ const CourseDetails = () => {
             component="video"
             width="100%"
             height="100%"
-            src={assets?.demoVideo}
+            src={lectureItem?.video?.url ?? assets.video}
             controls
             autoPlay
           />
@@ -39,7 +50,10 @@ const CourseDetails = () => {
               height: 'auto',
             }}
           >
-            <Typography variant="h5">Course Title</Typography>
+            <Typography variant="h5">{lectureItem?.title}</Typography>
+            <Typography pt={2} variant="body1">
+              {lectureItem?.description}
+            </Typography>
           </Card>
         </Box>
       </Box>
@@ -58,166 +72,24 @@ const CourseDetails = () => {
             p: 2,
           }}
         >
-          <Typography
-            variant="h5"
-            sx={{
-              cursor: 'pointer',
-              '&:hover': {
-                color: colors.blueAccent[1000],
-              },
-              fontSize: lectureItem === 0 && '1.2rem',
-              color: lectureItem === 0 && colors.blueAccent[1000],
-            }}
-            onClick={() => setLectureItem(0)}
-          >
-            Lecture Video 1
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={{
-              cursor: 'pointer',
-              '&:hover': {
-                color: colors.blueAccent[1000],
-              },
-              fontSize: lectureItem === 1 && '1.2rem',
-              color: lectureItem === 1 && colors.blueAccent[1000],
-            }}
-            onClick={() => setLectureItem(1)}
-          >
-            Lecture Video 2
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={{
-              cursor: 'pointer',
-              '&:hover': {
-                color: colors.blueAccent[1000],
-              },
-              fontSize: lectureItem === 2 && '1.2rem',
-              color: lectureItem === 2 && colors.blueAccent[1000],
-            }}
-            onClick={() => setLectureItem(2)}
-          >
-            Lecture Video 3
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={{
-              cursor: 'pointer',
-              '&:hover': {
-                color: colors.blueAccent[1000],
-              },
-              fontSize: lectureItem === 3 && '1.2rem',
-              color: lectureItem === 3 && colors.blueAccent[1000],
-            }}
-            onClick={() => setLectureItem(3)}
-          >
-            Lecture Video 4
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={{
-              cursor: 'pointer',
-              '&:hover': {
-                color: colors.blueAccent[1000],
-              },
-              fontSize: lectureItem === 111 && '1.2rem',
-              color: lectureItem === 111 && colors.blueAccent[1000],
-            }}
-          >
-            Lecture Video 5
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={{
-              cursor: 'pointer',
-              '&:hover': {
-                color: colors.blueAccent[1000],
-              },
-              fontSize: lectureItem === 111 && '1.2rem',
-              color: lectureItem === 111 && colors.blueAccent[1000],
-            }}
-          >
-            Lecture Video 6
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={{
-              cursor: 'pointer',
-              '&:hover': {
-                color: colors.blueAccent[1000],
-              },
-              fontSize: lectureItem === 111 && '1.2rem',
-              color: lectureItem === 111 && colors.blueAccent[1000],
-            }}
-          >
-            Lecture Video 7
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={{
-              cursor: 'pointer',
-              '&:hover': {
-                color: colors.blueAccent[1000],
-              },
-              fontSize: lectureItem === 111 && '1.2rem',
-              color: lectureItem === 111 && colors.blueAccent[1000],
-            }}
-          >
-            Lecture Video 8
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={{
-              cursor: 'pointer',
-              '&:hover': {
-                color: colors.blueAccent[1000],
-              },
-              fontSize: lectureItem === 111 && '1.2rem',
-              color: lectureItem === 111 && colors.blueAccent[1000],
-            }}
-          >
-            Lecture Video 9
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={{
-              cursor: 'pointer',
-              '&:hover': {
-                color: colors.blueAccent[1000],
-              },
-              fontSize: lectureItem === 111 && '1.2rem',
-              color: lectureItem === 111 && colors.blueAccent[1000],
-            }}
-          >
-            Lecture Video 10
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={{
-              cursor: 'pointer',
-              '&:hover': {
-                color: colors.blueAccent[1000],
-              },
-              fontSize: lectureItem === 111 && '1.2rem',
-              color: lectureItem === 111 && colors.blueAccent[1000],
-            }}
-          >
-            Lecture Video 11
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={{
-              cursor: 'pointer',
-              '&:hover': {
-                color: colors.blueAccent[1000],
-              },
-              fontSize: lectureItem === 111 && '1.2rem',
-              color: lectureItem === 111 && colors.blueAccent[1000],
-            }}
-          >
-            Lecture Video 12
-          </Typography>
+          {course?.lectures?.map((lecture, index) => (
+            <Typography
+              key={index}
+              variant="h5"
+              sx={{
+                cursor: 'pointer',
+                '&:hover': {
+                  color: colors.blueAccent[1000],
+                },
+                fontSize: lectureItem._id === lecture._id && '1.2rem',
+                color:
+                  lectureItem._id === lecture._id && colors.blueAccent[1000],
+              }}
+              onClick={() => setLectureItem(lecture)}
+            >
+              {index} {lecture?.title}
+            </Typography>
+          ))}
         </Card>
       </Box>
     </Box>

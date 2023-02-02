@@ -1,4 +1,5 @@
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import GroupIcon from '@mui/icons-material/Group';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import {
@@ -36,6 +37,14 @@ const AdminSidebar = () => {
         <ListItemButton>
           <ListItemIcon>
             <PlayCircleIcon />
+          </ListItemIcon>
+          <ListItemText primary="Courses" />
+        </ListItemButton>
+      </ListItem>
+      <ListItem disablePadding onClick={() => navigate('/admin/users')}>
+        <ListItemButton>
+          <ListItemIcon>
+            <GroupIcon />
           </ListItemIcon>
           <ListItemText primary="Courses" />
         </ListItemButton>
