@@ -10,7 +10,6 @@ import CreateCourse from './pages/Auth/admin/CreateCourse';
 import Dashboard from './pages/Auth/admin/Dashboard';
 import Users from './pages/Auth/admin/Users';
 import Auth from './pages/Auth/Auth';
-import ContactMe from './pages/ContactMe';
 import TopBar from './pages/global/Topbar';
 import Home from './pages/Home';
 import CourseDetails from './pages/me/CourseDetails';
@@ -20,6 +19,7 @@ import Profile from './pages/me/Profile';
 import NotFound from './pages/NotFound';
 import AdminAuthenticated from './pages/Proteted/AdminAuthenticated';
 import Authenticated from './pages/Proteted/Authenticated';
+import RequestCourse from './pages/RequestCourse';
 import { getWhoAmIAction } from './redux/actions/UserAction';
 const App = () => {
   const dispatch = useDispatch();
@@ -55,7 +55,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/auth" element={<Auth />} />
-              <Route path="/contact" element={<ContactMe />} />
+              <Route path="/request-course" element={<RequestCourse />} />
               <Route path="/about" element={<About />} />
               <Route path="me/" element={<Authenticated />}>
                 <Route index element={<Profile />} />

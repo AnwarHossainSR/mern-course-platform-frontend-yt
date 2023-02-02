@@ -123,3 +123,16 @@ export const addLectureAction = (id, lecture) => async (dispatch) => {
     toast.error(error.response.data.message);
   }
 };
+
+export const requestCourseAction = (data) => async (dispatch) => {
+  try {
+    dispatch(courseLoading());
+    const res = await Api.post('/course-request', data);
+    dispatch(stopLoading());
+    toast.success(res.message);
+  } catch (error) {
+    dispatch(stopLoading());
+    toast.error(error.response.data.message);
+    dispatch(courseError(error.response.data));
+  }
+};
