@@ -5,6 +5,7 @@ const initialState = {
   isAuth: false,
   isLoading: false,
   error: null,
+  users: [],
 };
 
 const userSlice = createSlice({
@@ -52,6 +53,10 @@ const userSlice = createSlice({
     stopLoading: (state) => {
       state.isLoading = false;
     },
+    getUsers: (state, action) => {
+      state.isLoading = false;
+      state.users = action.payload;
+    },
   },
 });
 
@@ -66,6 +71,7 @@ export const {
   logoutFail,
   whoami,
   stopLoading,
+  getUsers,
 } = userSlice.actions;
 
 export default userSlice.reducer;

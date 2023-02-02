@@ -46,7 +46,7 @@ const AdminSidebar = () => {
           <ListItemIcon>
             <GroupIcon />
           </ListItemIcon>
-          <ListItemText primary="Courses" />
+          <ListItemText primary="Users" />
         </ListItemButton>
       </ListItem>
       <ListItem disablePadding onClick={handleLogout}>

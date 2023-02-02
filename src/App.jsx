@@ -72,7 +72,9 @@ const App = () => {
                   <Route path=":id" element={<AdminCourseDetails />} />
                   <Route path="add" element={<CreateCourse />} />
                 </Route>
-                <Route path="users" element={<Users />} />
+                <Route path="users/">
+                  <Route index element={<Users />} />
+                </Route>
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
