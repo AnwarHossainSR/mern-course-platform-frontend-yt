@@ -8,6 +8,7 @@ import AdminCourseDetails from './pages/Auth/admin/AdminCourseDetails';
 import AdminCourses from './pages/Auth/admin/AdminCourses';
 import CreateCourse from './pages/Auth/admin/CreateCourse';
 import Dashboard from './pages/Auth/admin/Dashboard';
+import Users from './pages/Auth/admin/Users';
 import Auth from './pages/Auth/Auth';
 import ContactMe from './pages/ContactMe';
 import TopBar from './pages/global/Topbar';
@@ -71,6 +72,7 @@ const App = () => {
                   <Route path=":id" element={<AdminCourseDetails />} />
                   <Route path="add" element={<CreateCourse />} />
                 </Route>
+                <Route path="users" element={<Users />} />
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>

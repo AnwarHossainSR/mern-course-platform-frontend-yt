@@ -47,7 +47,13 @@ const AdminCourseDetails = () => {
           Add New Lecture
         </Button>
       </Stack>
-      <Box>
+      <Stack
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: 1,
+        }}
+      >
         {course?.lectures?.map((lecture) => (
           <Card
             sx={{
@@ -58,7 +64,7 @@ const AdminCourseDetails = () => {
             <CardMedia
               component="video"
               width="100%"
-              height="100%"
+              height="195px"
               src={lecture?.video?.url}
               controls
             />
@@ -91,7 +97,7 @@ const AdminCourseDetails = () => {
             </Typography>
           </Card>
         ))}
-      </Box>
+      </Stack>
       {open && <LectureAddModal open={open} setOpen={setOpen} courseId={id} />}
     </Box>
   );

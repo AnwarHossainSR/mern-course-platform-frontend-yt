@@ -95,17 +95,20 @@ export const getCourseLectureAction = (id) => async (dispatch) => {
   }
 };
 
-export const removeLectureAction = (id, courseId) => async (dispatch) => {
-  try {
-    dispatch(courseLoading());
-    const res = await Api.delete(`/course/${id}`);
-    dispatch(getCourseLectureAction(courseId));
-    toast.success(res.message);
-  } catch (error) {
-    dispatch(courseError(error.response.data));
-    toast.error(error.response.data.message);
-  }
-};
+export const removeLectureAction =
+  (lectureId, courseId) => async (dispatch) => {
+    try {
+      dispatch(courseLoading());
+      const res = await Api.delete(
+        `/lecture?courseId=${courseId}&lectureId=${lectureId}`
+      );
+      dispatch(getCourseLectureAction(courseId));
+      toast.success(res.message);
+    } catch (error) {
+      dispatch(courseError(error.response.data));
+      toast.error(error.response.data.message);
+    }
+  };
 
 export const addLectureAction = (id, lecture) => async (dispatch) => {
   try {
