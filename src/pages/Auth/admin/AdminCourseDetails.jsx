@@ -52,12 +52,13 @@ const AdminCourseDetails = () => {
           display: 'flex',
           flexDirection: 'row',
           gap: 1,
+          flexWrap: 'wrap',
         }}
       >
         {course?.lectures?.map((lecture) => (
           <Card
             sx={{
-              width: '350px',
+              width: '280px',
             }}
             key={lecture._id}
           >
