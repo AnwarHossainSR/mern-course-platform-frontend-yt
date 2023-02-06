@@ -27,3 +27,81 @@ export const plansData = [
     durationText: 'year',
   },
 ];
+
+export const stateData = [
+  {
+    title: 'Views',
+    value: 1247,
+    percentage: 150,
+    growth: 'up',
+  },
+  {
+    title: 'User',
+    value: 720,
+    percentage: 250,
+    growth: 'up',
+  },
+  {
+    title: 'Amount',
+    value: 142463,
+    percentage: 14,
+    growth: 'down',
+  },
+  {
+    title: 'Subscription',
+    value: 240,
+    percentage: 50,
+    growth: 'up',
+  },
+];
+
+export const barChartData = [
+  {
+    name: 'Jan',
+    uv: 4000,
+  },
+  {
+    name: 'Feb',
+    uv: 5000,
+  },
+  {
+    name: 'Mar',
+    uv: 2000,
+  },
+  {
+    name: 'Apr',
+    uv: 10780,
+  },
+  {
+    name: 'May',
+    uv: 1890,
+  },
+  {
+    name: 'Jun',
+    uv: 4390,
+  },
+  {
+    name: 'Jul',
+    uv: 3490,
+  },
+  {
+    name: 'Aug',
+    uv: 2490,
+  },
+  {
+    name: 'Sep',
+    uv: 3190,
+  },
+  {
+    name: 'Oct',
+    uv: 9190,
+  },
+  {
+    name: 'Nov',
+    uv: 3190,
+  },
+  {
+    name: 'Dec',
+    uv: 7190,
+  },
+];
