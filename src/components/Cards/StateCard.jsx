@@ -26,7 +26,7 @@ const StateCard = ({ data, colors }) => {
             justifyContent: 'space-between',
           }}
         >
-          <Typography variant="h2">
+          <Typography variant="h4">
             {data?.value} {data.title === 'Amount' && '$'}
           </Typography>
           <Typography

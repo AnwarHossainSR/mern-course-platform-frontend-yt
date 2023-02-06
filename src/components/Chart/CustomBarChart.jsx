@@ -9,7 +9,7 @@ const CustomBarChart = ({ colors }) => {
         width: '100%',
       }}
     >
-      <BarChart width={1000} height={350} data={barChartData}>
+      <BarChart width={950} height={330} data={barChartData}>
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip cursor={{ fill: 'transparent' }} />

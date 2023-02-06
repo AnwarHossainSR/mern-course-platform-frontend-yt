@@ -43,7 +43,7 @@ export const stateData = [
   },
   {
     title: 'Amount',
-    value: 142463,
+    value: 1423,
     percentage: 14,
     growth: 'down',
   },
