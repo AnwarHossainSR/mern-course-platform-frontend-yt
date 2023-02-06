@@ -58,50 +58,50 @@ export const stateData = [
 export const barChartData = [
   {
     name: 'Jan',
-    uv: 4000,
+    amount: 4000,
   },
   {
     name: 'Feb',
-    uv: 5000,
+    amount: 5000,
   },
   {
     name: 'Mar',
-    uv: 2000,
+    amount: 2000,
   },
   {
     name: 'Apr',
-    uv: 10780,
+    amount: 10780,
   },
   {
     name: 'May',
-    uv: 1890,
+    amount: 1890,
   },
   {
     name: 'Jun',
-    uv: 4390,
+    amount: 4390,
   },
   {
     name: 'Jul',
-    uv: 3490,
+    amount: 3490,
   },
   {
     name: 'Aug',
-    uv: 2490,
+    amount: 2490,
   },
   {
     name: 'Sep',
-    uv: 3190,
+    amount: 3190,
   },
   {
     name: 'Oct',
-    uv: 9190,
+    amount: 9190,
   },
   {
     name: 'Nov',
-    uv: 3190,
+    amount: 3190,
   },
   {
     name: 'Dec',
-    uv: 7190,
+    amount: 7190,
   },
 ];
