@@ -125,7 +125,7 @@ export const getAdminDeleteUserAction = (id) => async (dispatch) => {
 export const getAdminUpdateUserRoleAction = (id) => async (dispatch) => {
   dispatch(loading());
   try {
-    const res = await Api.put(`/admin/users/${id}`);
+    const res = await Api.put(`/admin/user/${id}`);
     dispatch(getAdminUsersAction());
     toast.success(res.message);
     dispatch(stopLoading());

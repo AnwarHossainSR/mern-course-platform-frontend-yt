@@ -58,7 +58,7 @@ const AdminCourseDetails = () => {
         {course?.lectures?.map((lecture) => (
           <Card
             sx={{
-              width: '280px',
+              width: '350px',
             }}
             key={lecture._id}
           >

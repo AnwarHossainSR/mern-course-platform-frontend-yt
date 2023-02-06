@@ -7,14 +7,18 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { getAdminDeleteUserAction } from '../../redux/actions/UserAction';
+import {
+  getAdminDeleteUserAction,
+  getAdminUpdateUserRoleAction,
+} from '../../redux/actions/UserAction';
 
 const UserTable = ({ isLoading, users, user }) => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleDelete = (id) => {
     dispatch(getAdminDeleteUserAction(id));
+  };
+  const changeUserRole = (id) => {
+    dispatch(getAdminUpdateUserRoleAction(id));
   };
 
   if (isLoading) return <Typography variant="h4">Loading...</Typography>;
@@ -50,7 +54,7 @@ const UserTable = ({ isLoading, users, user }) => {
                 <TableCell align="right">
                   <Button
                     variant="contained"
-                    onClick={() => navigate(`./${item._id}`)}
+                    onClick={() => changeUserRole(item._id)}
                     disabled={item?._id === user?._id}
                   >
                     Change to {item?.role === 'admin' ? 'user' : 'admin'}
