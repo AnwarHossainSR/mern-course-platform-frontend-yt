@@ -1,3 +1,4 @@
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import { Box, Card, CardMedia, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -70,6 +71,7 @@ const CourseDetails = () => {
             gap: 2,
             flexDirection: 'column',
             p: 2,
+            backgroundColor: '#82b1ff',
           }}
         >
           {course?.lectures?.map((lecture, index) => (
@@ -84,10 +86,18 @@ const CourseDetails = () => {
                 fontSize: lectureItem._id === lecture._id && '1.2rem',
                 color:
                   lectureItem._id === lecture._id && colors.blueAccent[1000],
+                p: lectureItem._id === lecture._id && 1,
+                backgroundColor: lectureItem._id === lecture._id && '#5b7bb2',
+                borderRadius: lectureItem._id === lecture._id && '5px',
               }}
               onClick={() => setLectureItem(lecture)}
             >
-              {index} {lecture?.title}
+              {lectureItem._id === lecture._id ? (
+                <PlayCircleIcon backgroundColor="#fff" />
+              ) : (
+                index + 1
+              )}
+              {lecture?.title}
             </Typography>
           ))}
         </Card>

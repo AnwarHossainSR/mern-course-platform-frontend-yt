@@ -61,6 +61,7 @@ export default function LectureAddModal({ open, setOpen, courseId }) {
             sx={{
               height: '40px',
             }}
+            disabled={isLoading}
           >
             Upload Lecture
             <input
