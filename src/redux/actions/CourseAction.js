@@ -91,6 +91,7 @@ export const getCourseLectureAction = (id) => async (dispatch) => {
     const res = await Api.get(`/course/${id}`);
     dispatch(courseDetails(res));
   } catch (error) {
+    toast.error(error.response.data.message);
     dispatch(courseError(error.response.data));
   }
 };

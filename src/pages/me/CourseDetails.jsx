@@ -2,15 +2,16 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import { Box, Card, CardMedia, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { assets } from '../../assets';
 import { tokens, useMode } from '../../context/theme';
 import { getCourseLectureAction } from '../../redux/actions/CourseAction';
 
 const CourseDetails = () => {
+  const navigate = useNavigate();
   const [theme] = useMode();
   const colors = tokens(theme.palette.mode);
-  const { course } = useSelector((state) => state.course);
+  const { course, error } = useSelector((state) => state.course);
   const dispatch = useDispatch();
   const { id } = useParams();
   const [lectureItem, setLectureItem] = useState(course?.lectures?.[0] ?? {});
@@ -19,6 +20,9 @@ const CourseDetails = () => {
   }, [id]);
   useEffect(() => {
     if (course?.lectures?.length > 0) setLectureItem(course?.lectures?.[0]);
+    if (error) {
+      navigate('/me');
+    }
   }, [course]);
   return (
     <Box
@@ -96,7 +100,7 @@ const CourseDetails = () => {
                 <PlayCircleIcon backgroundColor="#fff" />
               ) : (
                 index + 1
-              )}
+              )}{' '}
               {lecture?.title}
             </Typography>
           ))}
