@@ -5,6 +5,7 @@ import WhiteSpace from '../Common/WhiteSpace';
 
 const Subscription = () => {
   const { user } = useSelector((state) => state.user);
+  console.log(user?.subscription);
   return (
     <Box p={3}>
       <Typography variant="h5">Subscription Info</Typography>
@@ -26,7 +27,7 @@ const Subscription = () => {
           </Typography>
         </Box>
       )}
-      {user?.subscription?.status !== 'active' && (
+      {user?.subscription?.status === 'active' && (
         <Box>
           <Typography variant="body1">
             You are currently subscribed to the following plans:
